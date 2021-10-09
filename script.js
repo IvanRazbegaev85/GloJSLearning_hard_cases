@@ -22,13 +22,17 @@ Hard lesson 5, part 2, task 2
 let primeNumbers = function () {
     let count = [];
     for (let i = 1; i < 100; i++) {
-        for (let j = 1; j <= i; j++){
-            if (i % j == 0) count.push(j);
+        if (i % 2 == 0) {
+            continue
+        } else {
+            for (let j = 1; j <= i; j++) {
+                if (i % j == 0) count.push(j);
+            }
+            if (count.length == 2) {
+                console.log(`Делители числа ${i}: ${count[0]} и ${count[1]}`);
+            }
+            count = [];
         }
-        if (count.length == 2){
-            console.log(`Делители числа ${i}: ${count[0]} и ${count[1]}`);
-        }
-        count = [];
     }
     return true;
 }();
