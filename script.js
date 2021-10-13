@@ -25,12 +25,24 @@ const longTimeFormat = function () {
                 : seconds+' секунд';
     }
 
-    return console.log(`Сегодня ${ddmmYYYY} ${hoursFormat(date)} ${minutesFormat(date)} ${secondsFormat(date)}`)
+    return `Сегодня ${ddmmYYYY} ${hoursFormat(date)} ${minutesFormat(date)} ${secondsFormat(date)}`;
 }
 
-setInterval(longTimeFormat, 1000);
+function shortTimeFormat(){
+    let date = new Date();
+    return `${date.toLocaleDateString()} - ${date.toLocaleTimeString()}`;
+}
+for (let i = 0; i < 2; i++){
+    document.body.append(document.createElement("div"));
+}
 
-let date = new Date();
-console.log(`${date.toLocaleDateString()} - ${date.toLocaleTimeString()}`);
+let timeArea1 = document.querySelectorAll("div")[0];
+let timeArea2 = document.querySelectorAll("div")[1];
+setInterval(()=>timeArea1.innerHTML = longTimeFormat());
+timeArea2.innerHTML = shortTimeFormat();
+
+
+
+
 
 
